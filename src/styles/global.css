@@ -1,0 +1,54 @@
+/* General Page Styling */
+html, body {
+    min-height: 100vh; /* Allow natural growth */
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: block; /* REMOVE flexbox - This stops forced centering */
+    background-color: #f8f9fa;
+    overflow-y: auto; /* Ensure scrolling */
+}
+
+/* Ensure the main container starts at the top */
+.page-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Fix the form positioning */
+.form-container {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto; /* Ensures it stays centered */
+}
+
+/* Fix grocery lists stacking */
+.grocery-list-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Space between form and lists */
+}
+
+/* Prevent grocery lists from getting too big */
+.scrollable {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+/* Fix card sizes */
+.card {
+    max-width: 480px;
+    width: 90%;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
