@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function Form({ onSubmit, isLoading, hasResults }) {
+    // State to manage form input values
     const [formData, setFormData] = useState({
         allergies: "",
         dietaryRestrictions: "",
@@ -12,18 +13,22 @@ function Form({ onSubmit, isLoading, hasResults }) {
         additionalInfo: "",
     });
 
+    // Handles input field changes
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    // Handles form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (isLoading) return;
+        if (isLoading) return; // Prevents multiple submissions while loading
 
         alert("Generating your grocery list & recipes... This may take up to 60 seconds... Please wait!");
 
         await onSubmit(formData);
-        setFormData({ // Clear form fields after submission
+
+        // Clears form fields after submission
+        setFormData({
             allergies: "",
             dietaryRestrictions: "",
             dietaryPreferences: "",
@@ -39,8 +44,9 @@ function Form({ onSubmit, isLoading, hasResults }) {
         <div className={`card p-4 shadow-lg transition-all ${hasResults ? "move-left" : "centered"}`} style={{ maxWidth: "600px", width: "100%" }}>
             <h2 className="text-center">Generate Your Grocery List & Recipes</h2>
             <p className="text-center text-muted">
-                All Fields are OPTIONAL. The more details you provide, the more customized your list will be.
+                All fields are OPTIONAL. The more details you provide, the more customized your list will be.
             </p>
+
             <form onSubmit={handleSubmit}>
                 {Object.keys(formData).map((key, index) => (
                     <div key={index} className="mb-3">
