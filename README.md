@@ -8,6 +8,7 @@ This lightweight web app allows users to enter dietary preferences and receive a
 ---
 
 ## 🛠️ **Features**
+
 ✅ Generate structured grocery lists based on user preferences
 ✅ Receive five unique recipes per list
 ✅ Save grocery lists & recipes locally (no database required)
@@ -18,21 +19,27 @@ This lightweight web app allows users to enter dietary preferences and receive a
 ---
 
 ## 💻 **Live Demo**
-🔗 **[Try it Now!](#)** *(Add  deployed URL here when ready)*
+
+🔗 **[Try it Now!](#)** _(Add deployed URL here when ready)_
 
 ---
 
 ## 🏗️ **Installation & Running Locally**
+
 If you'd like to clone and run the project on your own computer, follow these steps:
 
 ### **1️⃣ Prerequisites**
+
 Make sure you have the following installed:
+
 - **[Node.js](https://nodejs.org/) (LTS version recommended)**
 - **[Git](https://git-scm.com/)**
 - A web browser (Chrome, Firefox, Edge, etc.)
 
 ### **2️⃣ Clone the Repository**
+
 Open your terminal and run:
+
 ```sh
 git clone https://github.com/vmproject1986/frontend-only-recipe-generator.git
 cd frontend-only-recipe-generator
@@ -114,3 +121,4 @@ Have a suggestion or found a bug? Open an issue or submit a pull request!
 For questions, reach out via GitHub Issues.
 
 🔗 Made with ❤️ by Matthew
+```

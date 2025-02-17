@@ -41,7 +41,6 @@
   color: #888;
 }
 
-
 /* ✅ Fix Global Layout Issues */
 body {
   display: block !important; /* Stop flexbox centering issue */

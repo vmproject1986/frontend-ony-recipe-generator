@@ -4,7 +4,47 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+
+    <!-- Open Graph Meta Tags (for social media previews) -->
+    <meta property="og:title" content="Frontend-Only Recipe Generator" />
+    <meta
+      property="og:description"
+      content="Generate personalized grocery lists and recipes instantly!"
+    />
+    <meta
+      property="og:image"
+      content="https://yourwebsite.com/path-to-your-image.jpg"
+    />
+    <meta property="og:url" content="https://yourwebsite.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Frontend-Only Recipe Generator" />
+    <meta
+      name="twitter:description"
+      content="Generate personalized grocery lists and recipes instantly!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://yourwebsite.com/path-to-your-image.jpg"
+    />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX");
+    </script>
+
+    <title>Recipe Generator</title>
   </head>
   <body>
     <div id="root"></div>
