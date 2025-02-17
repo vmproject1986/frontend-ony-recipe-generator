@@ -9,7 +9,8 @@ const fetchOpenAIResponse = async (formData) => {
 
     // Structured prompt ensuring AI correctly understands user input
     const prompt = `
-You are an AI that generates structured grocery lists and recipes.
+You are an AI that generates a structured grocery list and 5 recipes based on the user preferences.
+Ensure recipes only contain ingredients from the grocery list.
 
 Use the following user preferences:
 - Allergies: ${formData.allergies || "None"}

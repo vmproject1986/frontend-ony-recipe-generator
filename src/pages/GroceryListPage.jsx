@@ -35,6 +35,8 @@ function GroceryListPage() {
                 <button className="btn btn-primary" onClick={() => navigate("/")}>
                     Back to Form
                 </button>
+                <p>All recipes and lists are stored in your local browser and can be deleted at anytime here.</p>
+                <p></p>
                 <button className="btn btn-danger" onClick={clearAllLists}>
                     Clear All
                 </button>
@@ -45,11 +47,11 @@ function GroceryListPage() {
                     lists.map((list) => (
                         <div key={list.id} className="card p-3 mb-3 shadow-lg grocery-list">
                             {/* ✅ Display Grocery List Name */}
-                            <h3 className="text-center">{list.name || "Grocery List"}</h3>
+                            <h3 className="text-center">{list.name || ""}</h3>
                             <p><strong>Generated on:</strong> {list.timestamp}</p>
 
                             {/* ✅ Render Grocery List as a Proper List */}
-                            <h5><strong>Grocery Items:</strong></h5>
+                            <h5><strong>Potential Grocery Items:</strong></h5>
                             <ul>
                                 {list.groceryList && list.groceryList.length > 0 ? (
                                     list.groceryList.map((item, index) => (
