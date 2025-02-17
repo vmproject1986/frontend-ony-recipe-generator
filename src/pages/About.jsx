@@ -1,31 +1,43 @@
+import { useNavigate } from "react-router-dom";
+
 function About() {
+    const navigate = useNavigate();
+
     return (
-        <div className="container mt-4">
+        <div className="page-container">
+            {/* Back Button to Return to Landing Page */}
+            <button className="btn btn-primary mb-3" onClick={() => navigate("/")}>
+                Back
+            </button>
+
             <h1>About This App</h1>
             <p>
-                Welcome to the **Frontend-Only Recipe Generator**! This app allows you to generate personalized
-                **grocery lists and recipes** based on your dietary preferences.
+                Welcome to the <strong>Frontend-Only Recipe Generator</strong>! This app allows you to generate personalized
+                <strong> grocery lists and recipes </strong> based on your dietary preferences.
             </p>
 
+            {/* How It Works Section */}
             <h3>How It Works</h3>
             <ul>
-                <li>Enter your **dietary preferences** and **food restrictions** in the form.</li>
-                <li>Click **Generate** to send your request to OpenAI.</li>
-                <li>View your personalized **grocery list and recipes**.</li>
-                <li>Saved lists are stored **locally on your device**.</li>
+                <li>Enter your <strong>dietary preferences</strong> and <strong>food restrictions</strong> in the form.</li>
+                <li>Click <strong>Generate</strong> to send your request to OpenAI.</li>
+                <li>View your personalized <strong>grocery list and recipes</strong>.</li>
+                <li>Saved lists are stored <strong>locally on your device</strong>.</li>
             </ul>
 
+            {/* Data Storage & Privacy Section */}
             <h3>Data Storage & Privacy</h3>
             <p>
-                This app **does not store personal data on a server**. All grocery lists and recipes are stored
-                **locally in your browser's localStorage**. They will be **automatically deleted after 30 days**,
+                This app <strong>does not store personal data on a server</strong>. All grocery lists and recipes are stored
+                <strong> locally in your browser's localStorage</strong>. They will be <strong>automatically deleted after 30 days</strong>,
                 or you can manually delete them from the "Saved Lists" page.
             </p>
 
+            {/* Instructions for Deleting Lists */}
             <h3>How to Delete Stored Lists</h3>
             <p>
-                - To remove a **single grocery list**, click the **Delete** button next to it.<br />
-                - To **clear all saved lists**, use the **Clear All** button on the "Saved Lists" page.
+                - To remove a <strong>single grocery list</strong>, click the <strong>Delete</strong> button next to it.<br />
+                - To <strong>clear all saved lists</strong>, use the <strong>Clear All</strong> button on the "Saved Lists" page.
             </p>
 
             <p className="mt-4">

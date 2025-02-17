@@ -2,12 +2,13 @@ const fetchOpenAIResponse = async (formData) => {
     const apiKey = import.meta.env.VITE_OPENAI_KEY;
     const apiUrl = "https://api.openai.com/v1/chat/completions";
 
+    // Ensure the API key is available before making requests
     if (!apiKey) {
         console.error("Missing OpenAI API Key! Make sure your .env file is configured correctly.");
         return { error: "API Key is missing." };
     }
 
-    // Structured prompt ensuring AI correctly understands user input
+    // ✅ Structured Prompt to Guide AI for Consistent Output
     const prompt = `
 You are an AI that generates a structured grocery list and 5 recipes based on the user preferences.
 Ensure recipes only contain ingredients from the grocery list.
@@ -74,46 +75,50 @@ Healthy Meal Plan
             body: JSON.stringify({
                 model: "gpt-3.5-turbo",
                 messages: [{ role: "user", content: prompt }],
-                max_tokens: 1000, // Ensure complete response
+                max_tokens: 1000, // Ensure a full and complete response
             }),
         });
 
+        // ✅ Check for API errors
         if (!response.ok) {
-            console.error("OpenAI API Error:", response.status, response.statusText);
             return { error: `Error: ${response.status} - ${response.statusText}` };
         }
 
         const data = await response.json();
 
+        // ✅ Ensure response is valid before parsing
         if (!data.choices || data.choices.length === 0) {
             return { error: "Error: No response from OpenAI." };
         }
 
+        // ✅ Parse AI response into structured format
         return parseGroceryListAndRecipes(data.choices[0].message.content);
     } catch (error) {
-        console.error("Error fetching data from OpenAI:", error);
         return { error: "Error fetching response. Please try again." };
     }
 };
 
-// Parsing function to properly extract grocery list and recipes
+// ✅ Function to Parse OpenAI's Response into a Grocery List & Recipes
 const parseGroceryListAndRecipes = (responseText) => {
     const sections = responseText.split("****").map(s => s.trim());
 
+    // ✅ Ensure response format is correct before processing
     if (sections.length < 3) {
-        console.error("Invalid response format:", responseText);
         return { error: "Invalid response format. Could not parse." };
     }
 
-    const groceryListName = sections[0]; // First part is the list name
+    // Extract grocery list name and items
+    const groceryListName = sections[0];
     const groceryList = sections[1]
         .split("\n")
         .map(item => item.trim())
-        .filter(item => item !== "");
+        .filter(item => item !== ""); // Remove empty lines
 
-    const recipesText = sections.slice(2).join("\n"); // Combine all remaining parts as recipes
+    // ✅ Extract recipes from the response
+    const recipesText = sections.slice(2).join("\n"); // Remaining sections contain recipes
     const recipeSections = recipesText.split("**Recipe");
 
+    // ✅ Parse Each Recipe
     const recipes = recipeSections.slice(1).map(recipe => {
         const parts = recipe.split("**Ingredients:**");
         if (parts.length < 2) return null;
@@ -130,10 +135,10 @@ const parseGroceryListAndRecipes = (responseText) => {
             : [];
 
         return { name, ingredients, instructions };
-    }).filter(Boolean);
+    }).filter(Boolean); // Remove any null values if parsing fails
 
     return { groceryListName, groceryList, recipes };
 };
 
-
+// ✅ Export function for use in API calls
 export { fetchOpenAIResponse };
